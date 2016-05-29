@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layout onLaunch="launch" onVolumeUp="volume_up" onVolumeDown="volume_down" onResume="resume" onPause="pause" lightcolor="#e77300" darkcolor="#c46e19">
+  <tabs>
+    <tab text="Media">
+      <row>
+      <label id="title" text="Play to See"  color="darkgrey"/>
+      </row>
+      <row>
+        <button text="Start" onTap="start_dbeef" color="green" />
+        <button text="Exit" onTap="stop_dbeef" color="red" />
+      </row>
+      <row>
+        <button icon="previous" onTap="previous" />
+        <button icon="playpause" onTap="play_pause" />
+        <button icon="next" onTap="next" />
+      </row>
+      <row>
+        <button icon="stop" onTap="stop" />
+        <button icon="shuffle" onTap="random_song" />
+      </row>
+    </tab>
+    <tab text="Rate">
+      <row>
+      <label id="title" text="Play to See"  color="darkgrey"/>
+      </row>
+      <row>
+        <button icon="thumbsup" color="blue" onTap="fav_it" />
+        <button icon="thumbsdown" color="red" onTap="unfav_it" />
+      </row>
+      <row>
+        <button id="star1" text="★" color="green" onTap="star_1" />
+        <button id="star2" text="★" color="green" onTap="star_2" />
+        <button id="star3" text="★" color="green" onTap="star_3" />
+        <button id="star4" text="★" color="green" onTap="star_4" />
+        <button id="star5" text="★" color="green" onTap="star_5" />
+        <button id="loveit" text="💖" color="green" onTap="love_it" />
+      </row>
+    </tab>
+  </tabs>
+</layout>
