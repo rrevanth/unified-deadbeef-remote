@@ -17,6 +17,7 @@
       <row>
         <button icon="stop" onTap="stop" />
         <button icon="shuffle" onTap="random_song" />
+        <button icon="repeat" onTap="refresh_info" />
       </row>
     </tab>
     <tab text="Rate">

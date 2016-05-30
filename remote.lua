@@ -1,72 +1,25 @@
 local kb = require("keyboard");
 local starrating = 0;
-function split(pString, pPattern)
-   local Table = {}  -- NOTE: use {n = 0} in Lua-5.0
-   local fpat = "(.-)" .. pPattern
-   local last_end = 1
-   local s, e, cap = pString:find(fpat, 1)
-   while s do
-      if s ~= 1 or cap ~= "" then
-     table.insert(Table,cap)
-      end
-      last_end = e+1
-      s, e, cap = pString:find(fpat, last_end)
-   end
-   if last_end <= #pString then
-      cap = pString:sub(last_end)
-      table.insert(Table, cap)
-   end
-   return Table
-end
 
 function updateInfo()
-	cmd = "deadbeef --nowplaying-tf '[(%year%)] [%artist% -] $if2(%title%,%filename%) [(%genre%)]'"
+	cmd = "deadbeef --nowplaying-tf '$select($add(%rating%,1),☆;☆;☆;☆;☆,★;☆;☆;☆;☆,★;★;☆;☆;☆,★;★;★;☆;☆,★;★;★;★;☆,★;★;★;★;★)| $select($add(%rating%,1),☆ ☆ ☆ ☆ ☆,★ ☆ ☆ ☆ ☆,★ ★ ☆ ☆ ☆,★ ★ ★ ☆ ☆,★ ★ ★ ★ ☆,★ ★ ★ ★ ★)$ifequal([%loved%], 1, ❤ ,) [(%year%)] [%artist% -] $if2(%title%,%filename%) [(%genre%)]'"
 	local pout = "";
 	local presult = 0;
 	local perr = "";
+
 	local success, ex = pcall(function ()
-		starrating,perr,presult = libs.script.shell('kid3-cli -c "get rating" "$(deadbeef --nowplaying %F)"');
-	end);
-	pout = "";
-	presult = 0;
-	perr = "";
-	
-	success, ex = pcall(function ()
 		pout,perr,presult = libs.script.shell(cmd);
 	end);
-
+	stars, res = string.match(pout, "(.*)%|(.*)")
 	libs.server.update(
-		{ id = "title", text = pout }
+		{ id = "title", text = res }	
 	);
-	switch(starrating) : caseof {
-		[1]   = function () 	libs.server.update({ id = "star1", text = "★" },{ id = "star2", text = "☆" },{ id = "star3", text = "☆" },{ id = "star4", text = "☆" },{ id = "star5", text = "☆" }); end,
-		[2]   = function () 	libs.server.update({ id = "star1", text = "★" },{ id = "star2", text = "★" },{ id = "star3", text = "☆" },{ id = "star4", text = "☆" },{ id = "star5", text = "☆" }); end,
-		[3]   = function () 	libs.server.update({ id = "star1", text = "★" },{ id = "star2", text = "★" },{ id = "star3", text = "★" },{ id = "star4", text = "☆" },{ id = "star5", text = "☆" }); end,
-		[4]   = function () 	libs.server.update({ id = "star1", text = "★" },{ id = "star2", text = "★" },{ id = "star3", text = "★" },{ id = "star4", text = "★" },{ id = "star5", text = "☆" }); end,
-		[5]   = function () 	libs.server.update({ id = "star1", text = "★" },{ id = "star2", text = "★" },{ id = "star3", text = "★" },{ id = "star4", text = "★" },{ id = "star5", text = "★" }); end,
-		default   = function () 	libs.server.update({ id = "star1", text = "☆" },{ id = "star2", text = "☆" },{ id = "star3", text = "☆" },{ id = "star4", text = "☆" },{ id = "star5", text = "☆" }); end
-	}
 end 
 
--- --@help Rating Update function
--- function updateRating()
---   cmd = "deadbeef --nowplaying-tf '$select(%rating%,\'☆,☆,☆,☆,☆\',\'★,☆,☆,☆,☆\',\'★,★,☆,☆,☆\',\'★,★,★,☆,☆\',\'★,★,★,★,☆\',\'★,★,★,★,★\')'"
---   local pout = "";
---   local presult = 0;
---   local perr = "";
-  
---   local success, ex = pcall(function ()
---     pout,perr,presult = libs.script.shell(cmd);
---   end);
---   stars=split(pout,",")
---   for i=1, 10 do
--- 	  libs.server.update(
---       { id = "star" .. i, text = stars[i] }
--- 	  );
---   end
---   libs.device.toast(pout);
--- end
-
+--@help Refresh Meta
+actions.refresh_info = function ()
+	updateInfo();
+end
 
 --@help Toggle play/pause
 actions.play_pause = function ()
