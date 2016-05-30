@@ -1,5 +1,20 @@
-local kb = require("keyboard");
-local starrating = 0;
+local kb = libs.keyboard;
+local timer = libs.timer;
+local tid;
+
+events.focus = function ()
+    tid = timer.interval(function ()
+      updateInfo();
+    end, 500);
+end
+
+events.blur = function ()
+    timer.cancel(tid);
+end
+
+events.postaction = function ()
+  updateInfo();
+end
 
 function updateInfo()
 	cmd = "deadbeef --nowplaying-tf '$select($add(%rating%,1),☆;☆;☆;☆;☆,★;☆;☆;☆;☆,★;★;☆;☆;☆,★;★;★;☆;☆,★;★;★;★;☆,★;★;★;★;★)$ifequal([%loved%], 1, ;💔,;❤)| $select($add(%rating%,1),☆ ☆ ☆ ☆ ☆,★ ☆ ☆ ☆ ☆,★ ★ ☆ ☆ ☆,★ ★ ★ ☆ ☆,★ ★ ★ ★ ☆,★ ★ ★ ★ ★)$ifequal([%loved%], 1, ❤ ,) [(%year%)] [%artist% -] $if2(%title%,%filename%) [(%genre%)]'"
@@ -28,6 +43,21 @@ actions.refresh_info = function ()
 	updateInfo();
 end
 
+--@help Launch action
+actions.launch = function ()
+	updateInfo();
+end
+
+--@help Lower system volume
+actions.volume_down = function()
+	kb.press("volumedown");
+end
+
+--@help Raise system volume
+actions.volume_up = function()
+	kb.press("volumeup");
+end
+
 --@help Toggle play/pause
 actions.play_pause = function ()
 	cmd = "screen -dmS dbeef deadbeef --play-pause"
@@ -39,7 +69,6 @@ actions.play_pause = function ()
 	local success, ex = pcall(function ()
 		pout,perr,presult = libs.script.shell(cmd);
 	end);
-	updateInfo();
 end
 
 --@help Next playlist item
@@ -53,7 +82,6 @@ actions.next = function ()
 	local success, ex = pcall(function ()
 		pout,perr,presult = libs.script.shell(cmd);
 	end);
-	updateInfo();
 end
 
 --@help Previous playlist item
@@ -67,7 +95,6 @@ actions.previous = function ()
 	local success, ex = pcall(function ()
 		pout,perr,presult = libs.script.shell(cmd);
 	end);
-	updateInfo();
 end
 
 --@help Stop playback
@@ -81,7 +108,6 @@ actions.stop = function ()
 	local success, ex = pcall(function ()
 		pout,perr,presult = libs.script.shell(cmd);
 	end);
-	updateInfo();
 end
 
 --@help Play random song
@@ -95,7 +121,6 @@ actions.random_song = function ()
 	local success, ex = pcall(function ()
 		pout,perr,presult = libs.script.shell(cmd);
 	end);
-	updateInfo();
 end
 
 --@help Start DeadBeef in background
@@ -109,7 +134,6 @@ actions.start_dbeef = function ()
 	local success, ex = pcall(function ()
 		pout,perr,presult = libs.script.shell(cmd);
 	end);
-	updateInfo();
 end
 
 --@help Exit DeadBeef
@@ -154,41 +178,34 @@ end
 --@help Rate Song 0 Star
 actions.star_0 = function ()
   kb.stroke("ctrl","lwin","num0");
-  updateInfo();
 end
 
 --@help Rate Song 1 Star
 actions.star_1 = function ()
   kb.stroke("ctrl","lwin","num1");
-  updateInfo();
 end
 
 --@help Rate Song 2 Star
 actions.star_2 = function ()
   kb.stroke("ctrl","lwin","num2");
-  updateInfo();
 end
 
 --@help Rate Song 3 Star
 actions.star_3 = function ()
   kb.stroke("ctrl","lwin","num3");
-  updateInfo();
 end
 
 --@help Rate Song 4 Star
 actions.star_4 = function ()
   kb.stroke("ctrl","lwin","num4");
-  updateInfo();
 end
 
 --@help Rate Song 5 Star
 actions.star_5 = function ()
   kb.stroke("ctrl","lwin","num5");
-  updateInfo();
 end
 
 --@help Love the Song
 actions.love_it = function ()
   kb.stroke("ctrl","lwin","num6");
-  updateInfo();
 end
