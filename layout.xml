@@ -29,12 +29,12 @@
         <button icon="thumbsdown" color="red" onTap="unfav_it" />
       </row>
       <row>
-        <button id="star1" text="★" color="green" onTap="star_1" />
-        <button id="star2" text="★" color="green" onTap="star_2" />
-        <button id="star3" text="★" color="green" onTap="star_3" />
-        <button id="star4" text="★" color="green" onTap="star_4" />
-        <button id="star5" text="★" color="green" onTap="star_5" />
-        <button id="loveit" text="💖" color="green" onTap="love_it" />
+        <button id="star1" text="☆" color="#cccccc" onTap="star_1" />
+        <button id="star2" text="☆" color="#cccccc" onTap="star_2" />
+        <button id="star3" text="☆" color="#cccccc" onTap="star_3" />
+        <button id="star4" text="☆" color="#cccccc" onTap="star_4" />
+        <button id="star5" text="☆" color="#cccccc" onTap="star_5" />
+        <button id="loveit" text="❤" color="#cccccc" onTap="love_it" />
       </row>
     </tab>
   </tabs>
