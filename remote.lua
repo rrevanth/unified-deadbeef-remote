@@ -19,7 +19,7 @@ function updateInfo()
 		{ id = "star3", text = "" .. s3 },
 		{ id = "star4", text = "" .. s4 },
 		{ id = "star5", text = "" .. s5 },
-		{ id = "loveit", text = "" .. s6}
+		{ id = "loveit", text = "" .. s6 }
 	);
 end
 
