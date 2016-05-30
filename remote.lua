@@ -1,3 +1,4 @@
+local kb = require("keyboard");
 local starrating = 0;
 function split(pString, pPattern)
    local Table = {}  -- NOTE: use {n = 0} in Lua-5.0
@@ -190,140 +191,43 @@ actions.unfav_it = function ()
 	end);
 end
 
+--@help Rate Song 0 Star
+actions.star_0 = function ()
+  kb.stroke("ctrl","lwin","num0");
+  starrating = 0;
+end
+
 --@help Rate Song 1 Star
 actions.star_1 = function ()
-	cmd = 'kid3-cli -c "set rating 1" "$(deadbeef --nowplaying %F)"'
-
-	local pout = "";
-	local presult = 0;
-	local perr = "";
-	
-	local success, ex = pcall(function ()
-		pout,perr,presult = libs.script.shell(cmd);
-	end);
-	starrating = 1;
-	updateInfo();
-	libs.server.update(
-    { id = "star1", text = "★" },
-    { id = "star2", text = "☆" },
-    { id = "star3", text = "☆" },
-    { id = "star4", text = "☆" },
-    { id = "star5", text = "☆" }
-	);
+  kb.stroke("ctrl","lwin","num1");
+  starrating = 1;
 end
 
 --@help Rate Song 2 Star
 actions.star_2 = function ()
-	cmd = 'kid3-cli -c "set rating 2" "$(deadbeef --nowplaying %F)"'
-
-	local pout = "";
-	local presult = 0;
-	local perr = "";
-	
-	local success, ex = pcall(function ()
-		pout,perr,presult = libs.script.shell(cmd);
-	end);
-	starrating = 2;
-	updateInfo();
-	libs.server.update(
-    { id = "star1", text = "★" },
-    { id = "star2", text = "★" },
-    { id = "star3", text = "☆" },
-    { id = "star4", text = "☆" },
-    { id = "star5", text = "☆" }
-	);
+  kb.stroke("ctrl","lwin","num2");
+  starrating = 2;
 end
 
 --@help Rate Song 3 Star
 actions.star_3 = function ()
-	cmd = 'kid3-cli -c "set rating 3" "$(deadbeef --nowplaying %F)"'
-
-	local pout = "";
-	local presult = 0;
-	local perr = "";
-	
-	local success, ex = pcall(function ()
-		pout,perr,presult = libs.script.shell(cmd);
-	end);
-	starrating = 3;
-	updateInfo();
-	libs.server.update(
-    { id = "star1", text = "★" },
-    { id = "star2", text = "★" },
-    { id = "star3", text = "★" },
-    { id = "star4", text = "☆" },
-    { id = "star5", text = "☆" }
-	);
+  kb.stroke("ctrl","lwin","num3");
+  starrating = 3;
 end
 
 --@help Rate Song 4 Star
 actions.star_4 = function ()
-	cmd = 'kid3-cli -c "set rating 4" "$(deadbeef --nowplaying %F)"'
-
-	local pout = "";
-	local presult = 0;
-	local perr = "";
-	
-	local success, ex = pcall(function ()
-		pout,perr,presult = libs.script.shell(cmd);
-	end);
-	starrating = 4;
-	updateInfo();
-	libs.server.update(
-    { id = "star1", text = "★" },
-    { id = "star2", text = "★" },
-    { id = "star3", text = "★" },
-    { id = "star4", text = "★" },
-    { id = "star5", text = "☆" }
-	);
+  kb.stroke("ctrl","lwin","num4");
+  starrating = 4;
 end
 
 --@help Rate Song 5 Star
 actions.star_5 = function ()
-	cmd = 'kid3-cli -c "set rating 5" "$(deadbeef --nowplaying %F)"'
-
-	local pout = "";
-	local presult = 0;
-	local perr = "";
-	
-	local success, ex = pcall(function ()
-		pout,perr,presult = libs.script.shell(cmd);
-	end);
-	starrating = 5;
-	updateInfo();
-	libs.server.update(
-    { id = "star1", text = "★" },
-    { id = "star2", text = "★" },
-    { id = "star3", text = "★" },
-    { id = "star4", text = "★" },
-    { id = "star5", text = "★" }
-	);
+  kb.stroke("ctrl","lwin","num5");
+  starrating = 5;
 end
 
 --@help Love the Song
 actions.love_it = function ()
-	cmd = 'if [[ $(echo$(kid3-cli -c "get loved" "$(deadbeef --nowplaying %F)")) == 0 ]]; then kid3-cli -c "set loved 1" "$(deadbeef --nowplaying %F)"; else kid3-cli -c "set loved 0" "$(deadbeef --nowplaying %F)"; fi'
-
-	local pout = "";
-	local presult = 0;
-	local perr = "";
-	
-	local success, ex = pcall(function ()
-		pout,perr,presult = libs.script.shell(cmd);
-	end);
-	cmd = 'kid3-cli -c "get loved" "$(deadbeef --nowplaying %F)"'
-
-	pout = "";
-	presult = 0;
-	perr = "";
-	
-	success, ex = pcall(function ()
-		pout,perr,presult = libs.script.shell(cmd);
-	end);
-	libs.server.update({ id = "title", text = pout .. perr .. presult});
-	if pout == 1 then
-		libs.server.update({ id = "loveit", text = "💔"});
-	else
-		libs.server.update({ id = "loveit", text = "💖"});
-	end
+  kb.stroke("ctrl","lwin","num6");
 end
