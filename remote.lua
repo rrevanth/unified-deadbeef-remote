@@ -149,30 +149,29 @@ actions.stop_dbeef = function ()
 	end);
 end
 
---@help Copy to Favourites
-actions.fav_it = function ()
-	cmd = "deadbeef --nowplaying '%F' | xargs -0 cp -f -t /home/raven/Downloads/Music/Collection/"
+--@help Tag Lang EN
+actions.lang_en = function ()
+	kb.stroke("ctrl","lwin","numdivide");
+end
 
-	local pout = "";
-	local presult = 0;
-	local perr = "";
-	
-	local success, ex = pcall(function ()
-		pout,perr,presult = libs.script.shell(cmd);
-	end);
+--@help Tag Lang OT
+actions.lang_ot = function ()
+	kb.stroke("ctrl","lwin","nummultiply");
+end
+
+--@help Copy to English Lang Favourites
+actions.fav_it_en = function ()
+	kb.stroke("ctrl","lwin","num7");
+end
+
+--@help Copy to Others Favourites
+actions.fav_it_ot = function ()
+	kb.stroke("ctrl","lwin","num8");
 end
 
 --@help Remove from Favourites
 actions.unfav_it = function ()
-	cmd = 'rm "/home/raven/Downloads/Music/Collection/$(deadbeef --nowplaying %f)"'
-
-	local pout = "";
-	local presult = 0;
-	local perr = "";
-	
-	local success, ex = pcall(function ()
-		pout,perr,presult = libs.script.shell(cmd);
-	end);
+	kb.stroke("ctrl","lwin","num9");
 end
 
 --@help Rate Song 0 Star
