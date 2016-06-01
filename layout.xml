@@ -41,8 +41,8 @@
         <button text="👎" color="red" ontap="unfav_it" />
       </row>
       <row weight="1">
-        <button text="🎧EN" color="green" ontap="lang_en" />
-        <button text="🎧OT" color="red" ontap="lang_ot" />
+        <button text="🐙EN" color="green" ontap="lang_en" />
+        <button text="🐙OT" color="red" ontap="lang_ot" />
       </row>
       <row weight="1">
         <grid color="blue">
