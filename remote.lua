@@ -17,7 +17,7 @@ events.postaction = function ()
 end
 
 function updateInfo()
-	cmd = "deadbeef --nowplaying-tf '$select($add(%rating%,1),☆;☆;☆;☆;☆,★;☆;☆;☆;☆,★;★;☆;☆;☆,★;★;★;☆;☆,★;★;★;★;☆,★;★;★;★;★)$ifequal([%loved%], 1, ;💔,;❤)|$select(%lang%,OT,EN) ( $select($add(%rating%,1),☆ ☆ ☆ ☆ ☆,★ ☆ ☆ ☆ ☆,★ ★ ☆ ☆ ☆,★ ★ ★ ☆ ☆,★ ★ ★ ★ ☆,★ ★ ★ ★ ★) )$ifequal([%loved%], 1, ❤ ,) [(%year%)] [%artist% -] $if2(%title%,%filename%) [(%genre%)]'"
+	cmd = "deadbeef --nowplaying-tf '$select($add(%rating%,1),✩;✩;✩;✩;✩,★;✩;✩;✩;✩,★;★;✩;✩;✩,★;★;★;✩;✩,★;★;★;★;✩,★;★;★;★;★)$ifequal([%loved%], 1, ;💔,;❤)|$select(%lang%,OT,EN) ( $select($add(%rating%,1),✩ ✩ ✩ ✩ ✩,★ ✩ ✩ ✩ ✩,★ ★ ✩ ✩ ✩,★ ★ ★ ✩ ✩,★ ★ ★ ★ ✩,★ ★ ★ ★ ★) )$ifequal([%loved%], 1, ❤ ,) [(%year%)] [%artist% -] $if2(%title%,%filename%) [(%genre%)]'"
 	local pout = "";
 	local presult = 0;
 	local perr = "";
