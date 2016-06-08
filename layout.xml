@@ -21,9 +21,9 @@
         </grid>
       </row>
       <row weight="1">
-        <button icon="rwd" onTap="jump_back" />
+        <button icon="rwd" ontap="jump_back" />
         <button icon="refresh" ontap="refresh_info" />
-        <button icon="ff" onTap="jump_forward" />
+        <button icon="ff" ontap="jump_forward" />
       </row>
     </tab>
     <tab text="Rating">
@@ -58,9 +58,9 @@
         </grid>
       </row>
       <row weight="1">
-        <button icon="rwd" onTap="jump_back" />
+        <button icon="rwd" ontap="jump_back" />
         <button icon="refresh" ontap="refresh_info" />
-        <button icon="ff" onTap="jump_forward" />
+        <button icon="ff" ontap="jump_forward" />
       </row>
     </tab>
   </tabs>

@@ -209,12 +209,12 @@ actions.love_it = function ()
   kb.stroke("ctrl","lwin","num6");
 end
 
---@help Jump Fwd 5Sec
+--@help Jump Fwd 5%
 actions.jump_fwd = function ()
-  kb.stroke("ctrl","lwin","numplus");
+  kb.stroke("ctrl","lwin","numaddition");
 end
 
---@help Jump Back 5Sec
+--@help Jump Back 5%
 actions.jump_back = function ()
-  kb.stroke("ctrl","lwin","numminus");
+  kb.stroke("ctrl","lwin","numsubtract");
 end
