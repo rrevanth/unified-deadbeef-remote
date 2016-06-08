@@ -208,3 +208,13 @@ end
 actions.love_it = function ()
   kb.stroke("ctrl","lwin","num6");
 end
+
+--@help Jump Fwd 5Sec
+actions.jump_fwd = function ()
+  kb.stroke("ctrl","lwin","numplus");
+end
+
+--@help Jump Back 5Sec
+actions.jump_back = function ()
+  kb.stroke("ctrl","lwin","numminus");
+end
