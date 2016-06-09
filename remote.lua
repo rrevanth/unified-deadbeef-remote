@@ -1,4 +1,5 @@
 local kb = libs.keyboard;
+local dev = libs.device;
 local timer = libs.timer;
 local tid;
 
@@ -162,16 +163,19 @@ end
 --@help Copy to English Lang Favourites
 actions.fav_it_en = function ()
 	kb.stroke("ctrl","lwin","num7");
+	dev.toast("Copied to EN Collection");
 end
 
 --@help Copy to Others Favourites
 actions.fav_it_ot = function ()
 	kb.stroke("ctrl","lwin","num8");
+	dev.toast("Copied to OT Collection");
 end
 
 --@help Remove from Favourites
 actions.unfav_it = function ()
 	kb.stroke("ctrl","lwin","num9");
+	dev.toast("Removed from Collections");
 end
 
 --@help Rate Song 0 Star
@@ -211,7 +215,7 @@ end
 
 --@help Jump Fwd 5%
 actions.jump_fwd = function ()
-  kb.stroke("ctrl","lwin","numaddition");
+  kb.stroke("ctrl","lwin","numadd");
 end
 
 --@help Jump Back 5%

@@ -23,7 +23,7 @@
       <row weight="1">
         <button icon="rwd" ontap="jump_back" />
         <button icon="refresh" ontap="refresh_info" />
-        <button icon="ff" ontap="jump_forward" />
+        <button icon="ff" ontap="jump_fwd" />
       </row>
     </tab>
     <tab text="Rating">
@@ -60,7 +60,7 @@
       <row weight="1">
         <button icon="rwd" ontap="jump_back" />
         <button icon="refresh" ontap="refresh_info" />
-        <button icon="ff" ontap="jump_forward" />
+        <button icon="ff" ontap="jump_fwd" />
       </row>
     </tab>
   </tabs>
