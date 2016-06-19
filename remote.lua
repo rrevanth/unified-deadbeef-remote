@@ -234,6 +234,6 @@ actions.press_down = function ()
 end
 
 --@help Press Enter to Play Highlighted track
-actions.press_down = function ()
+actions.press_enter = function ()
   kb.press("return");
 end
