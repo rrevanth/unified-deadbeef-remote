@@ -17,6 +17,11 @@
             <row><button icon="playpause" ontap="play_pause" /></row>
             <row><button icon="shuffle" ontap="random_song" /></row>
           </grid>
+          <grid color="blue">
+            <row><button icon="up" ontap="press_up" /></row>
+            <row><button icon="play" ontap="press_enter" /></row>
+            <row><button icon="down" ontap="press_down" /></row>
+          </grid>
           <button icon="next" ontap="next" />
         </grid>
       </row>
@@ -35,6 +40,13 @@
           <button icon="previous" ontap="previous" />
           <button icon="playpause" ontap="play_pause" />
           <button icon="next" ontap="next" />
+        </grid>
+      </row>
+      <row weight="0.5">
+        <grid color="blue">
+          <button icon="up" ontap="press_up" />
+          <button icon="play" ontap="press_enter" />
+          <button icon="down" ontap="press_down" />
         </grid>
       </row>
       <row weight="1">

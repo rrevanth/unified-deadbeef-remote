@@ -222,3 +222,18 @@ end
 actions.jump_back = function ()
   kb.stroke("ctrl","lwin","numsubtract");
 end
+
+--@help Press Arrow Up
+actions.press_up = function ()
+  kb.press("up");
+end
+
+--@help Press Arrow Down
+actions.press_down = function ()
+  kb.press("down");
+end
+
+--@help Press Enter to Play Highlighted track
+actions.press_down = function ()
+  kb.press("return");
+end
